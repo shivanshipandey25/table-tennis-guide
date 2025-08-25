@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Tennis Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        #chat-box { width: 100%; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; margin-bottom: 10px; }
+        .user { color: blue; margin-bottom: 5px; }
+        .bot { color: green; margin-bottom: 10px; }
+        .controls { margin-bottom: 10px; }
+        select, input[type=text] { padding: 8px; margin: 5px; }
+        button { padding: 10px 15px; }
+    </style>
+</head>
+<body>
+    <h2>🏓 Table Tennis Guide</h2>
+    
+    <div class="controls">
+        <label for="search-mode">Search Mode:</label>
+        <select id="search-mode">
+            <option value="hybrid">Hybrid (Recommended)</option>
+            <option value="global">Global Search</option>
+            <option value="local">Local Search</option>
+        </select>
+    </div>
+    
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Ask something about TT...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("user-input");
+            let chatBox = document.getElementById("chat-box");
+            let searchMode = document.getElementById("search-mode").value;
+
+            let userMsg = input.value.trim();
+            if (!userMsg) return;
+
+            chatBox.innerHTML += `<div class='user'><b>You:</b> ${userMsg}</div>`;
+            input.value = "";
+
+            try {
+                let response = await fetch("/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        query: userMsg,
+                        search_mode: searchMode 
+                    })
+                });
+
+                let data = await response.json();
+                let botResponse = data.response || "No response received";
+                let sourcesInfo = data.sources_found ? ` (${data.sources_found} sources found)` : "";
+                
+                chatBox.innerHTML += `<div class='bot'><b>Bot [${data.search_mode}]:</b> ${botResponse}${sourcesInfo}</div>`;
+                
+            } catch (error) {
+                chatBox.innerHTML += `<div class='bot'><b>Bot:</b> Error occurred</div>`;
+            }
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        document.getElementById("user-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

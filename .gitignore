@@ -1,0 +1,61 @@
+    # Environment variables
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Folders to hide
+chunks/
+
+# Specific project files to hide
+chatbot1.py
+chunk_excel.py
+chunk_pdf.py
+chunk_txt.py
+chunks_table_tennis_full_data_players.json
+chunks_Table_Tennis_Training_Guide.json
+chunks_table_tennis.json
+embed_and_store.py
+populate_chunks.py
+Table_Tennis_Guide.pdf
+table_tennis_player_data.pdf
+table_tennis.txt
+test_connection.py
+test_models.py
+tt.py
+tt1.py
+tt2.py
+tt3.py
+tt4.py
+upload_all_chunks.py
+
+# Build files
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,10 @@
+python-dotenv
+pymongo
+sentence-transformers
+ai21
+PyPDF2
+pandas
+openpyxl
+torch
+scikit-learn
+numpy
