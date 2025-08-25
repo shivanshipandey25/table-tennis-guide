@@ -58,4 +58,6 @@ upload_all_chunks.py
 # Build files
 build/
 dist/
+*.xlsx
 *.egg-info/table_tennis_player_data.xlsx
+*.xlsx
