@@ -59,5 +59,19 @@ upload_all_chunks.py
 build/
 dist/
 *.xlsx
-*.egg-info/table_tennis_player_data.xlsx
+table_tennis_player_data.xlsx
 *.xlsx
+
+git add .
+git commit -m "added new files"
+git push
+
+# Large model cache files
+*.bin
+*.pt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Your PDF files
+ITTF_Rulebook_2025.pdf
