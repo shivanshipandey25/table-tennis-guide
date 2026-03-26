@@ -57,7 +57,7 @@ upload_all_chunks.py
 frontend_flask.py
 check_collections.py
 table_tennis.py
-
+check_data.py
 
 # Build files
 build/
