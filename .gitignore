@@ -54,6 +54,11 @@ tt2.py
 tt3.py
 tt4.py
 upload_all_chunks.py
+frontend_flask.py
+check_data.py
+check_collections.py
+test_connection.py
+table_tennis.py
 
 # Build files
 build/
